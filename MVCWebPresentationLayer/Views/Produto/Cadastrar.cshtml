@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastro de Produtos</h2>
+<br />
+
+<form method="post">
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Descricao</label>
+        <div class="col-md-10">
+            <input type="text" name="Descricao" id="Descricao" class="form-control" />
+            <span id="erroDescricao" name="erroDescricao" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Preco</label>
+        <div class="col-md-10">
+            <input type="text" name="Preco" id="Preco" class="form-control" />
+            <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Cor</label>
+        <div class="col-md-10">
+            <input type="text" name="Cor" id="Cor" class="form-control" />
+            <span id="erroCor" name="erroCor" class="text-danger"></span><br />
+        </div>
+    </div>
+
+     <div class="form-group">
+        <label class="control-label col-md-2">VaiPilha</label>
+        <div class="col-md-10">
+            <input type="checkbox" name="VaiPilha" id="VaiPilha"/>
+        </div>
+    </div>
+
+    <div class="row">
+        @if (ViewBag.MensagemErro != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar" />
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $("#BotaoEnviar").click(function (e) {
+
+            var sucesso = true;
+            var descricao = $("#Descricao").val();
+            var preco = $("#Preco").val();
+            var cor = $("#Cor").val();
+            var vaiPilha = $("#VaiPilha").val();
+
+            if (descricao == "") {
+                    $("#erroDescricao").html("A descrição deve ser informada.");
+                    sucesso = false;
+                }
+                else {
+                    if (descricao.length < 5 || descricao.length > 60) {
+                        $("#erroDescricao").html("O nome deve conter no mínimo 5 a 60 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroDescricao").html("");
+                    }
+            }
+
+            if (preco == "") {
+                $("#erroPreco").html("O preço deve ser informado.");
+                sucesso = false;
+            }
+            else {
+                $("#erroPreco").html("");
+            }
+
+            if (cor == "") {
+                $("#erroCor").html("A cor deve ser informada.");
+                sucesso = false;
+            }
+            else {
+                $("#erroCor").html("");
+            }
+
+            if (!sucesso) {
+                e.preventDefault();
+            }
+        });
+
+        $("#BotaoLimpar").click(function () {
+            $("#Descricao").val("");
+            $("#Preco").val("");
+            $("#Cor").val("");
+        });
+
+    </script>
+
+}
+
+
