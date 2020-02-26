@@ -16,7 +16,7 @@ namespace DAO.Mappings
 
             this.Property(p => p.Descricao).IsRequired().HasMaxLength(60).IsUnicode(false);
             this.Property(p => p.Preco).HasColumnName("float").IsRequired();
-            this.Property(p => p.Cor).IsRequired().HasMaxLength(60).IsUnicode(false);
+            //this.Property(p => p.Cor).IsRequired().HasMaxLength(60).IsUnicode(false);
             this.Property(p => p.VaiPilha).HasColumnName("bit");
         }
     }

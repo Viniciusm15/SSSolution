@@ -26,7 +26,10 @@ namespace DAO
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
 
-            modelBuilder.Properties().Where(c => c.PropertyType == typeof(string)).Configure(c => c.IsRequired().IsUnicode(false));
+            modelBuilder.Properties()
+                .Where(c => c.PropertyType == typeof(string))
+                .Configure(c => c.IsRequired().IsUnicode(false));
+
             base.OnModelCreating(modelBuilder);
         }
     }
