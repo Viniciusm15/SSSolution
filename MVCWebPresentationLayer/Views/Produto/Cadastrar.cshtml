@@ -35,7 +35,7 @@
      <div class="form-group">
         <label class="control-label col-md-2">VaiPilha</label>
         <div class="col-md-10">
-            <input type="checkbox" name="VaiPilha" id="VaiPilha"/>
+            <input type="checkbox" name="VaiPilha" checked="checked" id="VaiPilha"/>
         </div>
     </div>
 
@@ -70,7 +70,7 @@
             var descricao = $("#Descricao").val();
             var preco = $("#Preco").val();
             var cor = $("#Cor").val();
-            var vaiPilha = $("#VaiPilha").val();
+            //var vaiPilha = $("#VaiPilha").val();
 
             if (descricao == "") {
                     $("#erroDescricao").html("A descrição deve ser informada.");
