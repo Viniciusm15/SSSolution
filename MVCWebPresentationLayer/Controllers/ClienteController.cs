@@ -7,6 +7,7 @@ using MVCWebPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -22,13 +23,13 @@ namespace MVCWebPresentationLayer.Controllers
     public class ClienteController : Controller
     {
 
-        public ActionResult Cadastrar()
+        public async Task<ActionResult> Cadastrar()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(ClienteViewModel viewModel)
+        public async Task<ActionResult> Cadastrar(ClienteViewModel viewModel)
         {
             ClienteService svc = new ClienteService();
 
@@ -43,7 +44,7 @@ namespace MVCWebPresentationLayer.Controllers
 
             try
             {
-                svc.Insert(dto);
+                await svc.Insert(dto);
 
                 //Se funcionou, para a página inicial.
                 return RedirectToAction("Index", "Home");
@@ -65,12 +66,12 @@ namespace MVCWebPresentationLayer.Controllers
 
         //meusite.com/Cliente
         //meusite.com/Cliente/Index
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             try
             {
                 ClienteService svc = new ClienteService();
-                List<ClienteDTO> clientes = svc.GetData();
+                List<ClienteDTO> clientes = await svc.GetData();
 
                 var configuration = new MapperConfiguration(cfg =>
                 {
