@@ -24,6 +24,7 @@ namespace DAO
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            //Linha abaixo importa todos os MapConfigs do Projeto 
             modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
 
             modelBuilder.Properties()

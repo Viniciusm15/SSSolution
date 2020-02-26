@@ -9,7 +9,12 @@ namespace BLL.Interfaces
 {
     public interface IProdutoService
     {
-        void Insert(ProdutoDTO produto);
-        List<ProdutoDTO> GetData();
+        Task Insert(ProdutoDTO produto);
+        Task Update(ProdutoDTO produto);
+        Task Delete(ProdutoDTO produto);
+
+        Task<List<ProdutoDTO>> GetProducts();
+        Task<ProdutoDTO> GetProductByID(int id);
+
     }
 }

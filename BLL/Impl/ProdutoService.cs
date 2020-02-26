@@ -4,6 +4,7 @@ using DAO;
 using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,40 +12,41 @@ using System.Threading.Tasks;
 
 namespace BLL.Impl
 {
-    public class ProdutoService : IProdutoService
+    public class ProdutoService : BaseService, IProdutoService
     {
-        public void Insert(ProdutoDTO produto)
+        public async Task Insert(ProdutoDTO produto)
         {
             List<Error> errors = new List<Error>();
 
             if (string.IsNullOrWhiteSpace(produto.Descricao))
             {
-                errors.Add(new Error()
-                {
-                    Message = "Nome deve ser informado.",
-                    FieldName = "Nome"
-                });
+                AddError("Descricao", "Descricao deve ser informada");
+               
             }
-            else if (produto.Descricao.Length < 5 || produto.Descricao.Length > 60)
+            else
             {
-                errors.Add(new Error()
+                produto.Descricao = produto.Descricao.Trim();
+                if (produto.Descricao.Length < 5 || produto.Descricao.Length > 60)
                 {
-                    Message = "O nome deve conter entre 5 a 60 caracteres.",
-                    FieldName = "Nome"
-                });
+                    base.AddError("Descricao", "Descricao deve ter de 5 a 60 caracteres");
+                }
             }
 
-            if (errors.Count > 0)
+            if (produto.Preco <= 0)
             {
-                throw new NecoException(errors);
+                    base.AddError("Preco", "O preco deve ser maior que zero");
+
             }
+
+            //Verifica se existe erros e retorna a exception
+            base.CheckErrors();
 
             try
             {
                 using (SSContext context = new SSContext())
                 {
                     context.Produtos.Add(produto);
-                    context.SaveChanges();
+                    await context.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
@@ -54,14 +56,21 @@ namespace BLL.Impl
             }
 
         }
-
-        public List<ProdutoDTO> GetData()
+        public async Task Update(ProdutoDTO produto)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task Delete(ProdutoDTO produto)
+        {
+            throw new NotImplementedException();
+        }
+        public async Task<List<ProdutoDTO>> GetProducts()
         {
             try
             {
                 using (SSContext context = new SSContext())
                 {
-                    return context.Produtos.ToList();
+                    return await context.Produtos.ToListAsync();
                 }
             }
             catch (Exception ex)
@@ -70,6 +79,9 @@ namespace BLL.Impl
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }
         }
-
+        public async Task<ProdutoDTO> GetProductByID(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

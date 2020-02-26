@@ -7,6 +7,7 @@ using MVCWebPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,13 +19,13 @@ namespace MVCWebPresentationLayer.Controllers
 
     public class ProdutoController : Controller
     {
-        public ActionResult Cadastrar()
+        public async Task<ActionResult> Cadastrar()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(ProdutoViewModel viewModel)
+        public async Task<ActionResult> Cadastrar(ProdutoViewModel viewModel)
         {
             ProdutoService svc = new ProdutoService();
 
@@ -39,7 +40,7 @@ namespace MVCWebPresentationLayer.Controllers
 
             try
             {
-                svc.Insert(dto);
+                await svc.Insert(dto);
 
                 //Se funcionou, para a página inicial.
                 return RedirectToAction("Index", "Home");
@@ -59,12 +60,12 @@ namespace MVCWebPresentationLayer.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             try
             {
                 ProdutoService svc = new ProdutoService();
-                List<ProdutoDTO> produtos = svc.GetData();
+                List<ProdutoDTO> produtos = await svc.GetProducts();
 
                 var configuration = new MapperConfiguration(cfg =>
                 {

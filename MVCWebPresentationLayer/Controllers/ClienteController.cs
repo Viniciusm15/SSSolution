@@ -7,6 +7,7 @@ using MVCWebPresentationLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -65,12 +66,12 @@ namespace MVCWebPresentationLayer.Controllers
 
         //meusite.com/Cliente
         //meusite.com/Cliente/Index
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             try
             {
                 ClienteService svc = new ClienteService();
-                List<ClienteDTO> clientes = svc.GetData();
+                Task<List<ClienteDTO>> clientes = svc.GetData();
 
                 var configuration = new MapperConfiguration(cfg =>
                 {

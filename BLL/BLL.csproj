@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Impl\BaseService.cs" />
     <Compile Include="Impl\ClienteService.cs" />
     <Compile Include="Impl\ProdutoService.cs" />
     <Compile Include="Interfaces\IClienteService.cs" />
