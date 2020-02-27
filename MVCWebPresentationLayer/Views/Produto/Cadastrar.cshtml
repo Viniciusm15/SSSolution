@@ -19,26 +19,41 @@
     <div class="form-group">
         <label class="control-label col-md-2">Preco</label>
         <div class="col-md-10">
-            <input type="text" name="Preco" id="Preco" class="form-control" />
+            <input type="number" name="Preco" id="Preco" class="form-control" />
             <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
         </div>
     </div>
 
+
+    @{
+        string[] Cor = Enum.GetNames(typeof(DTO.Enums.Cor));
+    }
+
+
     <div class="form-group">
         <label class="control-label col-md-2">Cor</label>
         <div class="col-md-10">
-            <input type="text" name="Cor" id="Cor" class="form-control" />
+            <select class="form-control" name="Cor" id="Cor">
+                @{
+                    for (int i = 0; i < Cor.Length; i++)
+                    {
+                        <option value="@i">@Cor[i]</option>
+                    }
+                }
+            </select>
             <span id="erroCor" name="erroCor" class="text-danger"></span><br />
         </div>
     </div>
 
-     <div class="form-group">
+    <div class="form-group">
         <label class="control-label col-md-2">VaiPilha</label>
         <div class="col-md-10">
-            <input type="checkbox" name="VaiPilha" id="VaiPilha"/>
+            <input class="checkbox" type="checkbox" name="VaiPilha" id="VaiPilha" value="true" />
+            <input class="checkbox" type="hidden" name="VaiPilha" id="VaiPilha" value="false" />
+
         </div>
     </div>
-
+    
     <div class="row">
         @if (ViewBag.MensagemErro != null)
         {

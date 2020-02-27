@@ -43,7 +43,7 @@ namespace MVCWebPresentationLayer.Controllers
                 await svc.Insert(dto);
 
                 //Se funcionou, para a página inicial.
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Produto");
             }
             catch (NecoException ex)
             {
@@ -79,7 +79,7 @@ namespace MVCWebPresentationLayer.Controllers
 
                 return View(dados);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return View();
             }
