@@ -52,23 +52,23 @@ namespace BLL.Impl
             }
         }
 
-        public Task Update(ProdutoDTO produto)
+        public async Task Update(ProdutoDTO produto)
         {
             throw new NotImplementedException();
         }
 
-        public Task Delete(ProdutoDTO produto)
+        public async Task Delete(ProdutoDTO produto)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<ProdutoDTO>> GetData()
+        public async Task<List<ProdutoDTO>> GetData()
         {
             try
             {
                 using (SSContext context = new SSContext())
                 {
-                    return context.Produtos.ToListAsync();
+                    return await context.Produtos.ToListAsync();
                 }
             }
             catch (Exception ex)
@@ -78,7 +78,7 @@ namespace BLL.Impl
             }
         }
 
-        public Task<ProdutoDTO> GetProductById(int id)
+        public async Task<ProdutoDTO> GetProductById(int id)
         {
             throw new NotImplementedException();
         }
