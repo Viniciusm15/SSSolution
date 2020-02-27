@@ -14,6 +14,7 @@ namespace DTO.Enums
         Vermelho,
         Verde,
         Bege,
-        Roxo
+        Roxo,
+        Rosa
     }
 }

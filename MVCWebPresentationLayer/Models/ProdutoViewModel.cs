@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace MVCWebPresentationLayer.Models
 
         public double Preco  { get; set; }
 
-        public string Cor { get; set; }
+        public Cor Cor { get; set; }
 
         public bool VaiPilha { get; set; }
     }

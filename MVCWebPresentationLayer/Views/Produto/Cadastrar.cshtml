@@ -19,23 +19,32 @@
     <div class="form-group">
         <label class="control-label col-md-2">Preco</label>
         <div class="col-md-10">
-            <input type="text" name="Preco" id="Preco" class="form-control" />
+            <input type="number" name="Preco" id="Preco" class="form-control" />
             <span id="erroPreco" name="erroPreco" class="text-danger"></span><br />
         </div>
     </div>
 
+    @{
+        string[] cor = Enum.GetNames(typeof(DTO.Enums.Cor));
+    }
+
     <div class="form-group">
         <label class="control-label col-md-2">Cor</label>
         <div class="col-md-10">
-            <input type="text" name="Cor" id="Cor" class="form-control" />
+            <select name="Cor" id="Cor" class="form-control">
+                @for (int i = 0; i < cor.Length; i++)
+                {
+                    <option value="@i">@cor[i]</option>
+                }
+            </select>
             <span id="erroCor" name="erroCor" class="text-danger"></span><br />
         </div>
     </div>
 
-     <div class="form-group">
+    <div class="form-group">
         <label class="control-label col-md-2">VaiPilha</label>
         <div class="col-md-10">
-            <input type="checkbox" name="VaiPilha" checked="checked" id="VaiPilha"/>
+            <input type="checkbox" name="VaiPilha" checked="checked" id="VaiPilha" />
         </div>
     </div>
 
@@ -69,8 +78,6 @@
             var sucesso = true;
             var descricao = $("#Descricao").val();
             var preco = $("#Preco").val();
-            var cor = $("#Cor").val();
-            //var vaiPilha = $("#VaiPilha").val();
 
             if (descricao == "") {
                     $("#erroDescricao").html("A descrição deve ser informada.");
@@ -94,14 +101,6 @@
                 $("#erroPreco").html("");
             }
 
-            if (cor == "") {
-                $("#erroCor").html("A cor deve ser informada.");
-                sucesso = false;
-            }
-            else {
-                $("#erroCor").html("");
-            }
-
             if (!sucesso) {
                 e.preventDefault();
             }
@@ -110,7 +109,6 @@
         $("#BotaoLimpar").click(function () {
             $("#Descricao").val("");
             $("#Preco").val("");
-            $("#Cor").val("");
         });
 
     </script>
