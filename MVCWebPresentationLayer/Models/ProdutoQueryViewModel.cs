@@ -15,5 +15,6 @@ namespace MVCWebPresentationLayer.Models
         public Cor Cor { get; set; }
         public bool VaiPilha { get; set; }
         public virtual ICollection<FornecedorDTO> Fornecedores { get; set; }
+        public virtual ICollection<CategoriaDTO> Categorias { get; set; }
     }
 }

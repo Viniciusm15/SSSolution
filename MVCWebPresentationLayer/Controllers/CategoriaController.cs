@@ -26,7 +26,7 @@ namespace MVCWebPresentationLayer.Controllers
 
             var configuration = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<FornecedorViewModel, FornecedorDTO>();
+                cfg.CreateMap<CategoriaViewModel, CategoriaDTO>();
             });
             IMapper mapper = configuration.CreateMapper();
 

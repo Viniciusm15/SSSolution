@@ -14,11 +14,9 @@ namespace DTO
         public double Preco { get; set; }
         public Cor Cor { get; set; }
         public bool VaiPilha { get; set; }
-        public virtual ICollection<FornecedorDTO> Fornecedores { get; set; }
-
-        public ProdutoDTO()
-        {
-            this.Fornecedores = new List<FornecedorDTO>();
-        }
+        public int? FornecedorID { get; set; }
+        public virtual FornecedorDTO Fornecedor { get; set; }
+        public int? CategoriaID { get; set; }
+        public virtual CategoriaDTO Categoria { get; set; }
     }
 }

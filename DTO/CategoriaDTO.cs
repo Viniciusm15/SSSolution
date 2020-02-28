@@ -10,5 +10,6 @@ namespace DTO
     {
         public int ID { get; set; }
         public string Nome { get; set; }
+        public virtual ICollection<ProdutoDTO> Produtos { get; set; }
     }
 }
