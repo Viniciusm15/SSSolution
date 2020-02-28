@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastro de Fornecedor</h2>
+<br />
+
+<form method="post">
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Nome</label>
+        <div class="col-md-10">
+            <input type="text" name="Nome" id="Nome" class="form-control"/>
+            <span id="erroNome" name="erroNome" class="text-danger"></span><br/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">CNPJ</label>
+        <div class="col-md-10">
+            <input type="text" name="CNPJ" id="CNPJ" class="form-control" placeholder="99.999.999/9999-99"/>
+            <span id="erroCNPJ" name="erroCNPJ" class="text-danger"></span><br/>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            <input type="text" name="Email" id="Email" class="form-control"/>
+            <span id="erroEmail" name="erroEmail" class="text-danger"></span><br/>
+        </div>
+    </div>
+
+
+    <div class="row">
+        @if (ViewBag.MensagemErro != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar"/>
+                <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar"/>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section scripts{
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            var cnpjMask = $("#CNPJ");
+            cnpjMask.mask('99.999.999/9999-99', { reverse: false });
+
+            $("#BotaoEnviar").click(function (e) {
+
+                var sucesso = true;
+                var nome = $("#Nome").val();
+                var cnpj = $("#CNPJ").val();
+                var email = $("#Email").val();
+                
+
+                if (nome == "") {
+                    $("#erroNome").html("A descrição deve ser informada.");
+                    sucesso = false;
+                }
+                else {
+                    if (nome.length < 5 || nome.length > 50) {
+                        $("#erroNome").html("O nome deve conter no mínimo 5 a 50 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroNome").html("");
+                    }
+                }
+
+                if (cnpj == "") {
+                    $("#erroCNPJ").html("O CNPJ deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (cnpj.length != 18) {
+                        $("#erroCNPJ").html("CNPJ no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroCNPJ").html("");
+                    }
+                }
+
+                if (email == "") {
+                    $("#erroEmail").html("O email deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (!validateEmail(email)) {
+                        $("#erroEmail").html("Email no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroEmail").html("");
+                    }
+                }
+
+                if (!sucesso) {
+                    e.preventDefault();
+                }
+            });
+
+            $("#BotaoLimpar").click(function () {
+                $("#Nome").val("");
+                $("#CNPJ").val("");
+                $("#Email").val("");
+               
+            });
+        });
+
+    </script>
+
+}
+
+

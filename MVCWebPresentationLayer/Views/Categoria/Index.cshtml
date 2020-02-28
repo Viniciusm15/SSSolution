@@ -1,0 +1,33 @@
+﻿
+@model List<MVCWebPresentationLayer.Models.CategoriaQueryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <td>ID</td>
+        <td>Nome</td>
+    </tr>
+
+    @foreach (MVCWebPresentationLayer.Models.CategoriaQueryViewModel item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Nome</td>
+        </tr>
+    }
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+    </ul>
+</nav>

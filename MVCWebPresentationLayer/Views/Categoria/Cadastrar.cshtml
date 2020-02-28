@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h2>Cadastrar</h2>
+
+<h2>Cadastro de Produtos</h2>
+<br />
+
+<form method="post">
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Categoria</label>
+        <div class="col-md-10">
+            <input type="text" name="Nome" id="Nome" class="form-control" />
+            <span id="erroNome" name="erroNome" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    <div class="row">
+        @if (ViewBag.MensagemErro != null)
+        {
+            <div class="form-group">
+                <div class="col-md-10">
+                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                </div>
+            </div>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar" />
+                <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar" />
+            </div>
+        </div>
+    </div>
+
+
+    @section scripts{
+
+        <script type="text/javascript">
+
+        $("#BotaoEnviar").click(function (e) {
+
+            var sucesso = true;
+            var nome = $("#Nome").val();
+          
+
+            if (nome == "") {
+                    $("#erroNome").html("O nome deve ser informada.");
+                    sucesso = false;
+                }
+            else {
+                if (nome.length < 5 || nome.length > 60) {
+                        $("#erroNome").html("O nome deve conter no mínimo 5 a 60 caracteres.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroNome").html("");
+                    }
+            }
+
+            if (preco == "") {
+                $("#erroPreco").html("O preço deve ser informado.");
+                sucesso = false;
+            }
+        $("#BotaoLimpar").click(function () {
+            $("#Descricao").val("");
+            $("#Preco").val("");
+            $("#Cor").val("");
+        });
+
+        </script>
+        }

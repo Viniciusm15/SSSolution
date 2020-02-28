@@ -6,19 +6,18 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class ClienteDTO
+    public class FornecedorDTO
     {
         public int ID { get; set; }
-
         public string Nome { get; set; }
-
+        public string CNPJ { get; set; }
         public string Email { get; set; }
+        public ICollection<ProdutoDTO> produtos { get; set; }
 
-        public string CPF { get; set; }
+        public FornecedorDTO()
+        {
+            this.produtos = new List<ProdutoDTO>();
+        }
 
-        public DateTime DataNascimento { get; set; }
-
-        public string Senha { get; set; }
-       
     }
 }

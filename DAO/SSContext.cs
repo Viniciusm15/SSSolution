@@ -12,13 +12,17 @@ namespace DAO
 {
     public class SSContext : DbContext
     {
-        public SSContext():base(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\900176\Desktop\bases\SSSLocadora.mdf;")
+        public SSContext():base(@"Data Source=(LocalDB)\MSSQLLocalDB;Initial Catalog=LOCADORA;Integrated Security=True;Connect Timeout=30")
         {
 
         }
+        
 
         public DbSet<ClienteDTO> Clientes { get; set; }
         public DbSet<ProdutoDTO> Produtos { get; set; }
+        public DbSet<CategoriaDTO> Categorias { get; set; }
+        public DbSet<FornecedorDTO> Fornecedores { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
