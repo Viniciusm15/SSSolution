@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\CategoriaMapConfig.cs" />
     <Compile Include="Mappings\ClienteMapConfig.cs" />
     <Compile Include="Mappings\FornecedorMapConfig.cs" />
     <Compile Include="Mappings\ProdutoMapConfig.cs" />

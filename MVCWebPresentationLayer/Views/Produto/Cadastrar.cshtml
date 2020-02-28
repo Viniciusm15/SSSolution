@@ -26,9 +26,7 @@
 
     @{
         string[] cor = Enum.GetNames(typeof(DTO.Enums.Cor));
-        List<DTO.FornecedorDTO> fornecedores = new List<DTO.FornecedorDTO>();
     }
-
     <div class="form-group">
         <label class="control-label col-md-2">Cor</label>
         <div class="col-md-10">
@@ -42,6 +40,25 @@
         </div>
     </div>
 
+    @{
+        List<DTO.CategoriaDTO> categorias = new List<DTO.CategoriaDTO>();
+    }
+    <div class="form-group">
+        <label class="control-label col-md-2">Categorias</label>
+        <div class="col-md-10">
+            <select name="Fornecedores" id="Fornecedores" class="form-control">
+                @for (int i = 0; i < categorias.Count; i++)
+                {
+                    <option value="@i">@categorias[i]</option>
+                }
+            </select>
+            <span id="erroFornecedor" name="erroFornecedor" class="text-danger"></span><br />
+        </div>
+    </div>
+
+    @{
+        List<DTO.FornecedorDTO> fornecedores = new List<DTO.FornecedorDTO>();
+    }
     <div class="form-group">
         <label class="control-label col-md-2">Fornecedores</label>
         <div class="col-md-10">

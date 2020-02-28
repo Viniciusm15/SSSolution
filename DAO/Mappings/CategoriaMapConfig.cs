@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace DAO.Mappings
 {
-    internal class FornecedorMapConfig : EntityTypeConfiguration<FornecedorDTO>
+    internal class CategoriaMapConfig : EntityTypeConfiguration<CategoriaDTO>
     {
-        public FornecedorMapConfig()
+        public CategoriaMapConfig()
         {
-            //FLUENT API
-            this.ToTable("FORNECEDORES");
+            this.ToTable("CATEGORIAS");
 
             this.Property(c => c.Nome).HasMaxLength(50);
         }
