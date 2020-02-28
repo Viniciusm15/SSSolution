@@ -14,6 +14,7 @@ namespace MVCWebPresentationLayer.Controllers
 {
     public class CategoriaController : Controller
     {
+
         public async Task<ActionResult> Cadastrar()
         {
             return View();

@@ -14,6 +14,30 @@
             <input type="text" name="Nome" id="Nome" class="form-control" />
             <span id="erroNome" name="erroNome" class="text-danger"></span><br />
         </div>
+    </div> 
+    
+    <div class="form-group">
+        <label class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            <input type="text" name="Email" id="Email" class="form-control" />
+            <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2">CNPJ</label>
+        <div class="col-md-10">
+            <input type="text" name="CNPJ" id="CNPJ" class="form-control" placeholder="00.000.000/0000-00.000.000-00" />
+            <span id="erroCNPJ" name="erroCNPJ" class="text-danger"></span><br />
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-md-2">Telefone</label>
+        <div class="col-md-10">
+            <input type="text" name="Telefone" id="Telefone" class="form-control" placeholder="(00) 0000-0000" />
+            <span id="erroTelefone" name="erroTelefone" class="text-danger"></span><br />
+        </div>
     </div>
 
     <div class="row">
@@ -42,6 +66,12 @@
 
         $(document).ready(function () {
 
+            var CNPJ = $("#CNPJ");
+            CNPJ.mask('00.000.000/0000-00.000.000-00', { reverse: false });
+
+            var Telefone = $("#Telefone");
+            Telefone.mask('(00) 0000-0000', { reverse: false });
+
             $("#BotaoEnviar").click(function (e) {
 
                 var sucesso = true;
@@ -61,6 +91,48 @@
                     }
                 }
 
+                if (email == "") {
+                    $("#erroEmail").html("O email deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (!validateEmail(email)) {
+                        $("#erroEmail").html("Email no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroEmail").html("");
+                    }
+                }
+
+                if (CNPJ == "") {
+                    $("#erroCNPJ").html("O CNPJ deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (CNPJ.length != 18) {
+                        $("#erroCNPJ").html("CNPJ no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroCNPJ").html("");
+                    }
+                }
+
+                if (Telefone == "") {
+                    $("#erroTelefone").html("O Telefone  deve ser informado.");
+                    sucesso = false;
+                }
+                else {
+                    if (Telefone.length != 12) {
+                        $("#erroTelefone").html("Telefone no formato incorreto.");
+                        sucesso = false;
+                    }
+                    else {
+                        $("#erroTelefone").html("");
+                    }
+                }
+
                 if (!sucesso) {
                     e.preventDefault();
                 }
@@ -68,6 +140,9 @@
 
             $("#BotaoLimpar").click(function () {
                 $("#Nome").val("");
+                $("#Email").val("");
+                $("#CNPJ").val("");
+                $("#Telefone").val("");
             });
         });
 

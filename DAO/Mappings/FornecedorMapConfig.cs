@@ -16,6 +16,9 @@ namespace DAO.Mappings
             this.ToTable("FORNECEDORES");
 
             this.Property(c => c.Nome).HasMaxLength(50);
+            this.Property(c => c.Email).HasMaxLength(50);
+            this.Property(c => c.CNPJ).IsFixedLength().HasMaxLength(18);
+            this.Property(c => c.Telefone).IsFixedLength().HasMaxLength(12);
         }
     }
 }

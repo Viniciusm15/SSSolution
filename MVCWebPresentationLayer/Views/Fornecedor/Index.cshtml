@@ -10,6 +10,9 @@
     <tr>
         <th>ID</th>
         <th>Nome</th>
+        <th>Email</th>
+        <th>CNPJ</th>
+        <th>Telefone</th>
     </tr>
 
     @foreach (MVCWebPresentationLayer.Models.FornecedorQueryViewModel item in Model)
@@ -17,6 +20,9 @@
         <tr>
             <td>@item.ID</td>
             <td>@item.Nome</td>
+            <td>@item.Email</td>
+            <td>@item.CNPJ</td>
+            <td>@item.Telefone</td>
         </tr>
     }
 </table>

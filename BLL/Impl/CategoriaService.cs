@@ -1,4 +1,5 @@
 ﻿using BLL.Interfaces;
+using Common;
 using DAO;
 using DTO;
 using System;
@@ -31,12 +32,28 @@ namespace BLL.Impl
             {
                 using (SSContext context = new SSContext())
                 {
+                    //Irá no banco procurar se a categoria com este nome já foi cadastrada.
+                    CategoriaDTO categoriaJaCadastrada = await context.Categorias.FirstOrDefaultAsync(c => c.Nome.Equals(categoria.Nome));
+
+                    if (categoriaJaCadastrada != null)
+                    {
+                        //Se entrou aqui, categoria já cadastrada.
+                        //Ou no melhor dos casos, criar um response.
+                        throw new NecoException("Categoria já cadastrada!");
+                    }
                     context.Categorias.Add(categoria);
                     await context.SaveChangesAsync();
                 }
             }
             catch (Exception ex)
             {
+                if (ex is NecoException)
+                {
+                    throw ex;
+                }
+
+                //TODO: Logar o erro em algum lugar. 
+
                 File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }
@@ -55,6 +72,14 @@ namespace BLL.Impl
             {
                 File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
                 throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
+
+        public async Task<List<CategoriaDTO>> GetCategorias(int page, int size)
+        {
+            using (SSContext context = new SSContext())
+            {
+                return await context.Categorias.Skip(page*size).Take(size).ToListAsync();
             }
         }
     }
