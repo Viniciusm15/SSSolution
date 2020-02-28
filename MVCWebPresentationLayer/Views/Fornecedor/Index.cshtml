@@ -10,7 +10,6 @@
     <tr>
         <th>ID</th>
         <th>Nome</th>
-        <th>Produtos</th>
     </tr>
 
     @foreach (MVCWebPresentationLayer.Models.FornecedorQueryViewModel item in Model)
@@ -18,7 +17,6 @@
         <tr>
             <td>@item.ID</td>
             <td>@item.Nome</td>
-            <td>@item.produto.Descricao</td>
         </tr>
     }
 </table>

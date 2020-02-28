@@ -15,5 +15,10 @@ namespace DTO
         public Cor Cor { get; set; }
         public bool VaiPilha { get; set; }
         public virtual ICollection<FornecedorDTO> Fornecedores { get; set; }
+
+        public ProdutoDTO()
+        {
+            this.Fornecedores = new List<FornecedorDTO>();
+        }
     }
 }

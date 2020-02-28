@@ -10,7 +10,5 @@ namespace MVCWebPresentationLayer.Models
     {
         public int ID { get; set; }
         public string Nome { get; set; }
-        public int? ProdutoID { get; set; }
-        public virtual ProdutoDTO produto { get; set; }
     }
 }
