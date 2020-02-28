@@ -53,8 +53,10 @@
   <ItemGroup>
     <Compile Include="Impl\BaseService.cs" />
     <Compile Include="Impl\ClienteService.cs" />
+    <Compile Include="Impl\FornecedorService.cs" />
     <Compile Include="Impl\ProdutoService.cs" />
     <Compile Include="Interfaces\IClienteService.cs" />
+    <Compile Include="Interfaces\IFornecedorService.cs" />
     <Compile Include="Interfaces\IProdutoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

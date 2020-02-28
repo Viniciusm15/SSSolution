@@ -19,6 +19,7 @@ namespace DAO
 
         public DbSet<ClienteDTO> Clientes { get; set; }
         public DbSet<ProdutoDTO> Produtos { get; set; }
+        public DbSet<FornecedorDTO> Fornecedores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
