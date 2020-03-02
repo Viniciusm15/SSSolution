@@ -18,6 +18,10 @@ namespace DAO.Mappings
             this.Property(p => p.Preco).HasColumnName("float").IsRequired();
             //this.Property(p => p.Cor).IsRequired().HasMaxLength(60).IsUnicode(false);
             this.Property(p => p.VaiPilha).HasColumnName("bit");
+
+            //One to many
+            this.HasRequired(p => p.Categoria).WithMany(p => p.Produtos).HasForeignKey(p => p.CategoriaID).WillCascadeOnDelete(false);
+            this.HasRequired(p => p.Fornecedor).WithMany(p => p.Produtos).HasForeignKey(p => p.FornecedorID).WillCascadeOnDelete(false);
         }
     }
 }
