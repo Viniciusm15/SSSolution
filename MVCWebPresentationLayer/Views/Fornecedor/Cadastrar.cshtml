@@ -27,7 +27,7 @@
     <div class="form-group">
         <label class="control-label col-md-2">CNPJ</label>
         <div class="col-md-10">
-            <input type="text" name="CNPJ" id="CNPJ" class="form-control" placeholder="00.000.000/0000-00.000.000-00" />
+            <input type="text" name="CNPJ" id="CNPJ" class="form-control" placeholder="00.000.000/0000-00" />
             <span id="erroCNPJ" name="erroCNPJ" class="text-danger"></span><br />
         </div>
     </div>
@@ -67,7 +67,7 @@
         $(document).ready(function () {
 
             var CNPJ = $("#CNPJ");
-            CNPJ.mask('00.000.000/0000-00.000.000-00', { reverse: false });
+            CNPJ.mask('00.000.000/0000-00', { reverse: false });
 
             var Telefone = $("#Telefone");
             Telefone.mask('(00) 0000-0000', { reverse: false });
@@ -76,6 +76,7 @@
 
                 var sucesso = true;
                 var nome = $("#Nome").val();
+                var email = $("#Email").val();
                
                 if (nome == "") {
                     $("#erroNome").html("O nome deve ser informado.");

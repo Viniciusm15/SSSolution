@@ -14,27 +14,8 @@ namespace MVCWebPresentationLayer.Controllers
 {
     public class FornecedorController : Controller
     {
-        FornecedorService fsvc = new FornecedorService();
-        CategoriaService csvc = new CategoriaService();
-
         public async Task<ActionResult> Cadastrar()
         {
-            List<FornecedorDTO> fornecedores = await fsvc.GetData();
-            List<CategoriaDTO> categorias = await csvc.GetData();
-
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<FornecedorDTO, FornecedorQueryViewModel>();
-                cfg.CreateMap<CategoriaDTO, CategoriaQueryViewModel>();
-            });
-            IMapper mapper = configuration.CreateMapper();
-
-            FornecedorQueryViewModel dadosFornecedores = mapper.Map<FornecedorQueryViewModel>(fornecedores);
-            CategoriaQueryViewModel dadosCategorias = mapper.Map<CategoriaQueryViewModel>(categorias);
-
-            ViewBag.Fornecedores = dadosFornecedores;
-            ViewBag.Categorias = dadosCategorias;
-
             return View();
         }
 

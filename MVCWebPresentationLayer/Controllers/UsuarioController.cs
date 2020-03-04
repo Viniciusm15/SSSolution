@@ -15,6 +15,8 @@ namespace MVCWebPresentationLayer.Controllers
 {
     public class UsuarioController : Controller
     {
+        UsuarioService svc = new UsuarioService();
+
         public async Task<ActionResult> Cadastrar()
         {
             return View();
@@ -56,8 +58,56 @@ namespace MVCWebPresentationLayer.Controllers
             return View();
         }
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
+            try
+            {
+                UsuarioService svc = new UsuarioService();
+                List<UsuarioDTO> usuarios = await svc.GetData();
+
+                var configuration = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<UsuarioDTO, UsuarioQueryViewModel>();
+                });
+                IMapper mapper = configuration.CreateMapper();
+
+                //Transforma o ClienteDTO em um ClienteViewModel. (Lista de clientes)
+                //Este objeto "dados" é uma lista de objetos ViewModel.
+                List<UsuarioQueryViewModel> dados = mapper.Map<List<UsuarioQueryViewModel>>(usuarios);
+
+                return View(dados);
+            }
+            catch (Exception)
+            {
+                return View();
+            }
+        }
+
+        public async Task<ActionResult> Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Login(string email, string senha)
+        {
+            try
+            {
+                //Se chegou aqui, sucesso.
+                UsuarioDTO usuario = await svc.Autententicar(email, senha);
+
+                //Criando um arquivo na máquina do usuário.
+                HttpCookie cookie = new HttpCookie("USERIDENTITY", usuario.ID.ToString());
+                cookie.Expires = DateTime.MaxValue;
+
+                Response.Cookies.Add(cookie);
+                return RedirectToAction("Index","Cliente");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Erros = ex.Message;
+            }
+
             return View();
         }
     }

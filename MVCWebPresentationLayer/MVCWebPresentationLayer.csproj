@@ -147,6 +147,7 @@
     <Compile Include="Models\ClienteViewModel.cs" />
     <Compile Include="Models\FornecedorQueryViewModel.cs" />
     <Compile Include="Models\FornecedorViewModel.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\ProdutoQueryViewModel.cs" />
     <Compile Include="Models\ProdutoViewModel.cs" />
     <Compile Include="Models\UsuarioQueryViewModel.cs" />

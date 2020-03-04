@@ -11,5 +11,6 @@ namespace BLL.Interfaces
     {
         Task Insert(UsuarioDTO usuario);
         Task<List<UsuarioDTO>> GetData();
+        Task<UsuarioDTO> Autententicar(string email, string password);
     }
 }

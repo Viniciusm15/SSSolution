@@ -60,5 +60,28 @@ namespace BLL.Impl
                 throw new Exception("Erro no banco de dados, contate o administrador.");
             }
         }
+
+        public async Task<UsuarioDTO> Autententicar(string email, string password)
+        {
+            try
+            {
+                using (SSContext context = new SSContext())
+                {
+                    UsuarioDTO user = await context.Usuarios.FirstOrDefaultAsync(u => u.Email.Equals(email) && u.Senha.Equals(password)).ConfigureAwait(false);
+
+                    if (user == null)
+                    {
+                        throw new Exception("Email e/ou senhas inválidos.");
+                    }
+
+                    return user;
+                }
+            }
+            catch (Exception ex)
+            {
+                File.WriteAllText("log.txt", ex.Message + " - " + ex.StackTrace);
+                throw new Exception("Erro no banco de dados, contate o administrador.");
+            }
+        }
     }
 }

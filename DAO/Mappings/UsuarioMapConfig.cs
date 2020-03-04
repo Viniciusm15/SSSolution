@@ -15,6 +15,7 @@ namespace DAO.Mappings
             this.ToTable("USUARIOS");
 
             this.Property(c => c.Email).IsRequired().HasMaxLength(60).IsUnicode(false);
+            this.HasIndex(c => c.Email).IsUnique(true);
             this.Property(c => c.Nome).HasMaxLength(50);
             this.Property(c => c.Senha).HasMaxLength(30);
         }
