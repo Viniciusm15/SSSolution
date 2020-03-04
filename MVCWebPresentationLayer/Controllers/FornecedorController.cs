@@ -87,8 +87,6 @@ namespace MVCWebPresentationLayer.Controllers
                 });
                 IMapper mapper = configuration.CreateMapper();
 
-                //Transforma o ClienteDTO em um ClienteViewModel. (Lista de clientes)
-                //Este objeto "dados" é uma lista de objetos ViewModel.
                 List<FornecedorQueryViewModel> dados = mapper.Map<List<FornecedorQueryViewModel>>(fornecedores);
 
                 return View(dados);

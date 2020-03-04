@@ -135,6 +135,7 @@
     <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -148,6 +149,8 @@
     <Compile Include="Models\FornecedorViewModel.cs" />
     <Compile Include="Models\ProdutoQueryViewModel.cs" />
     <Compile Include="Models\ProdutoViewModel.cs" />
+    <Compile Include="Models\UsuarioQueryViewModel.cs" />
+    <Compile Include="Models\UsuarioViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +198,8 @@
     <Content Include="Views\Fornecedor\Cadastrar.cshtml" />
     <Content Include="Views\Categoria\Cadastrar.cshtml" />
     <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Usuario\Cadastrar.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

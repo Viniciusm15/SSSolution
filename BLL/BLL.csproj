@@ -56,10 +56,12 @@
     <Compile Include="Impl\ClienteService.cs" />
     <Compile Include="Impl\FornecedorService.cs" />
     <Compile Include="Impl\ProdutoService.cs" />
+    <Compile Include="Impl\UsuarioService.cs" />
     <Compile Include="Interfaces\ICategoriaService.cs" />
     <Compile Include="Interfaces\IClienteService.cs" />
     <Compile Include="Interfaces\IFornecedorService.cs" />
     <Compile Include="Interfaces\IProdutoService.cs" />
+    <Compile Include="Interfaces\IUsuarioService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

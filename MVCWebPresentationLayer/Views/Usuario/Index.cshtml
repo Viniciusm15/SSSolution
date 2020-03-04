@@ -1,0 +1,39 @@
+﻿@model List<MVCWebPresentationLayer.Models.UsuarioQueryViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+</br>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Semha</th>
+        <th>Permissão</th>
+    </tr>
+
+    @foreach (MVCWebPresentationLayer.Models.UsuarioQueryViewModel item in Model)
+    {
+        <tr>
+            <td>@item.ID</td>
+            <td>@item.Nome</td>
+            <td>@item.Email</td>
+            <td>@item.Senha</td>
+            <td>@item.Permissao</td>
+        </tr>
+    }
+</table>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">4</a></li>
+        <li class="page-item"><a class="page-link" href="#">5</a></li>
+    </ul>
+</nav>

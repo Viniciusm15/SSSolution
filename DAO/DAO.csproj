@@ -55,6 +55,7 @@
     <Compile Include="Mappings\ClienteMapConfig.cs" />
     <Compile Include="Mappings\FornecedorMapConfig.cs" />
     <Compile Include="Mappings\ProdutoMapConfig.cs" />
+    <Compile Include="Mappings\UsuarioMapConfig.cs" />
     <Compile Include="SSContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
