@@ -66,17 +66,20 @@
 
         $(document).ready(function () {
 
-            var CNPJ = $("#CNPJ");
-            CNPJ.mask('00.000.000/0000-00', { reverse: false });
+            var CNPJMask = $("#CNPJ");
+            CNPJMask.mask('00.000.000/0000-00', { reverse: false });
 
-            var Telefone = $("#Telefone");
-            Telefone.mask('(00) 0000-0000', { reverse: false });
+            var TelefoneMask = $("#Telefone");
+            TelefoneMask.mask('(00) 0000-0000', { reverse: false });
 
             $("#BotaoEnviar").click(function (e) {
 
                 var sucesso = true;
                 var nome = $("#Nome").val();
                 var email = $("#Email").val();
+                var cnpj = $("#CNPJ").val();
+                var telefone = $("#Telefone").val();
+
                
                 if (nome == "") {
                     $("#erroNome").html("O nome deve ser informado.");
@@ -106,12 +109,12 @@
                     }
                 }
 
-                if (CNPJ == "") {
+                if (cnpj == "") {
                     $("#erroCNPJ").html("O CNPJ deve ser informado.");
                     sucesso = false;
                 }
                 else {
-                    if (CNPJ.length != 18) {
+                    if (cnpj.length != 18) {
                         $("#erroCNPJ").html("CNPJ no formato incorreto.");
                         sucesso = false;
                     }
@@ -120,12 +123,12 @@
                     }
                 }
 
-                if (Telefone == "") {
+                if (telefone == "") {
                     $("#erroTelefone").html("O Telefone  deve ser informado.");
                     sucesso = false;
                 }
                 else {
-                    if (Telefone.length != 12) {
+                    if (telefone.length != 14) {
                         $("#erroTelefone").html("Telefone no formato incorreto.");
                         sucesso = false;
                     }

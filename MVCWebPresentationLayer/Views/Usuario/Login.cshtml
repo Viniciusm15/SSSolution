@@ -1,49 +1,87 @@
-﻿
-@{
-    ViewBag.Title = "Login";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login V1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
 
-<h2>Login</h2>
-<br />
+    <div class="limiter">
+        <div class="container-login100">
 
-<form method="post">
+            <form class="login100-form validate-form">
+                <span class="login100-form-title">
+                    Login
+                </span>
 
-    <div class="form-group">
-        <label class="control-label col-md-2">Email</label>
-        <div class="col-md-10">
-            <input type="text" name="Email" id="Email" class="form-control" />
-            <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-2">Senha</label>
-        <div class="col-md-10">
-            <input type="password" name="Senha" id="Senha" class="form-control" />
-            <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
-        </div>
-    </div>
-
-    <div class="row">
-        @if (ViewBag.MensagemErro != null)
-        {
-            <div class="form-group">
-                <div class="col-md-10">
-                    <span class="text-danger">@ViewBag.MensagemErro</span>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" name="Email" id="Email" placeholder="Email">
+                    <span id="erroEmail" name="erroEmail" class="text-danger"></span><br />
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
                 </div>
-            </div>
-        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cadastrar" class="btn btn-default" id="BotaoEnviar" name="BotaoEnviar" />
-                <input type="button" value="Limpar" class="btn btn-default" id="BotaoLimpar" name="BotaoLimpar" />
-            </div>
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="password" name="Senha" id="Senha" placeholder="Password">
+                    <span id="erroSenha" name="erroSenha" class="text-danger"></span><br />
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+                        <i class="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" id="BotaoEnviar" name="BotaoEnviar">
+                        Login
+                    </button>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" id="BotaoLimpar" name="BotaoLimpar">
+                        Limpar
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+    </div>
 
-</form>
-
+    <!--===============================================================================================-->
+    <script src="~/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/bootstrap/js/popper.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="~/vendor/tilt/tilt.jquery.min.js"></script>
+    <script>
+        $('.js-tilt').tilt({
+            scale: 1.1
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="~/Scripts/main2.js"></script>
+</body>
 
 @section scripts{
 
@@ -100,4 +138,4 @@
     </script>
 
 }
-
+</html>

@@ -20,7 +20,7 @@ namespace MVCWebPresentationLayer.Controllers
      *JQuery: framework javascript de quality of life.
      *TypeScript: superset javascript. (adiciona herança, polimorfismo, interface, tipagem)
      */
-    public class ClienteController : Controller
+    public class ClienteController : BaseController
     {
 
         public async Task<ActionResult> Cadastrar()
@@ -47,7 +47,7 @@ namespace MVCWebPresentationLayer.Controllers
                 await svc.Insert(dto);
 
                 //Se funcionou, para a página inicial.
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Cliente");
             }
             catch (NecoException ex)
             {
@@ -68,6 +68,13 @@ namespace MVCWebPresentationLayer.Controllers
         //meusite.com/Cliente/Index
         public async Task<ActionResult> Index()
         {
+            HttpCookie cookie = this.Request.Cookies["USERIDENTITY"];
+
+            if(cookie == null)
+            {
+                return RedirectToAction("Login", "Usuario");
+            }
+
             try
             {
                 ClienteService svc = new ClienteService();

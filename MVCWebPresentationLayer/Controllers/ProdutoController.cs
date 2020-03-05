@@ -34,8 +34,8 @@ namespace MVCWebPresentationLayer.Controllers
             });
             IMapper mapper = configuration.CreateMapper();
 
-            FornecedorQueryViewModel dadosFornecedores = mapper.Map<FornecedorQueryViewModel>(fornecedores);
-            CategoriaQueryViewModel dadosCategorias = mapper.Map<CategoriaQueryViewModel>(categorias);
+            List<FornecedorQueryViewModel> dadosFornecedores = mapper.Map<List<FornecedorQueryViewModel>>(fornecedores);
+            List<CategoriaQueryViewModel> dadosCategorias = mapper.Map<List<CategoriaQueryViewModel>>(categorias);
 
             ViewBag.Fornecedores = dadosFornecedores;
             ViewBag.Categorias = dadosCategorias;

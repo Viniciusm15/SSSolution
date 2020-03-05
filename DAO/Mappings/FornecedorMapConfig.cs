@@ -17,8 +17,10 @@ namespace DAO.Mappings
 
             this.Property(c => c.Nome).HasMaxLength(50);
             this.Property(c => c.Email).HasMaxLength(50);
+            this.HasIndex(c => c.Email).IsUnique(true);
             this.Property(c => c.CNPJ).IsFixedLength().HasMaxLength(18);
-            this.Property(c => c.Telefone).IsFixedLength().HasMaxLength(12);
+            this.HasIndex(c => c.CNPJ).IsUnique(true);
+            this.Property(c => c.Telefone).IsFixedLength().HasMaxLength(14);
         }
     }
 }

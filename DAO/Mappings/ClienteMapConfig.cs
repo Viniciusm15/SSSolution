@@ -19,6 +19,7 @@ namespace DAO.Mappings
             this.HasIndex(c => c.CPF).IsUnique(true);
             this.Property(c => c.DataNascimento).IsRequired().HasColumnType("date");
             this.Property(c => c.Email).IsRequired().HasMaxLength(60).IsUnicode(false);
+            this.HasIndex(c => c.Email).IsUnique(true);
             this.Property(c => c.Nome).HasMaxLength(50);
             this.Property(c => c.Senha).HasMaxLength(30);
         }
